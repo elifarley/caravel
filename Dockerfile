@@ -17,6 +17,7 @@ RUN mkdir -p /tmp/ms-sql && (cd /tmp/ms-sql && curl 'https://download.microsoft.
   -e '/make install/,$ d' build_dm.sh && echo '(cd $tmp/$dm_dir && make install)' >> build_dm.sh && \
   echo YES | ./build_dm.sh --accept-warning && \
   ./install.sh install --accept-license) && \
+  sed -rie 's/\[.+SQL Server\]/[MS-SQL]/' /etc/odbcinst.ini && \
   pip install pyodbc && \
   rm -rf /tmp/*
 
