@@ -13,6 +13,8 @@ RUN echo as of 2016-04-03 && \
 RUN mkdir -p /tmp/ms-sql && (cd /tmp/ms-sql && curl 'https://download.microsoft.com/download/2/E/5/2E58F097-805C-4AB8-9FC6-71288AB4409D/msodbcsql-13.0.0.0.tar.gz' \
   -H 'Referer: https://www.microsoft.com/en-us/download/confirmation.aspx?id=50419' --compressed | \
   tar --strip-components=1 -xzv && \
+  sed -ri -e 's/wget/curl/g' -e's/(\s*)\$\(curl[^)]+\)/\1curl -fsSL "$dm_url" -o "$dm_package_path"/' \
+  -e '/make install/,$ d' build_dm.sh && echo '(cd $tmp/$dm_dir && make install)' >> build_dm.sh && \
   echo YES | ./build_dm.sh --accept-warning && \
   echo "TODO: make install" && \
   ./install.sh install --accept-license) && \
