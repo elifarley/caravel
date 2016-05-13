@@ -13,7 +13,7 @@ RUN pip install pandas==0.18.0
 RUN apt-get install -y libmysqlclient-dev && pip install mysqlclient==1.3.7
 
 # PostgreSQL
-RUN apt-get build-dep -y psycopg2 && pip install psycopg2==2.6.1
+RUN apt-get build-dep -y python-psycopg2 && pip install psycopg2==2.6.1
 
 # Caravel
 RUN pip install caravel==0.9.0
