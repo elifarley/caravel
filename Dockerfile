@@ -1,5 +1,5 @@
-FROM ubuntu:14.04
-MAINTAINER amancevice@cargometrics.com
+FROM debian:jessie
+MAINTAINER elifarley@gmail.com
 
 # Setup
 RUN echo as of 2016-04-03 && \
