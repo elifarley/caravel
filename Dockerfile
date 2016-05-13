@@ -45,10 +45,10 @@ ENV ROW_LIMIT=5000 \
 EXPOSE 8088
 
 RUN useradd -b /home -m -U caravel
+COPY caravel /home/caravel
+RUN chown -R caravel:caravel /home/caravel
 USER caravel
 
 WORKDIR /home/caravel
-
-COPY caravel /home/caravel
 
 CMD ["caravel", "runserver"]
