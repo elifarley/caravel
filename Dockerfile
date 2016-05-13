@@ -16,7 +16,6 @@ RUN mkdir -p /tmp/ms-sql && (cd /tmp/ms-sql && curl 'https://download.microsoft.
   sed -ri -e 's/wget/curl/g' -e's/(\s*)\$\(curl[^)]+\)/\1curl -fsSL "$dm_url" -o "$dm_package_path"/' \
   -e '/make install/,$ d' build_dm.sh && echo '(cd $tmp/$dm_dir && make install)' >> build_dm.sh && \
   echo YES | ./build_dm.sh --accept-warning && \
-  echo "TODO: make install" && \
   ./install.sh install --accept-license) && \
   rm -rf /tmp/*
 
