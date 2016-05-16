@@ -2,8 +2,11 @@ FROM ubuntu:14.04
 MAINTAINER amancevice@cargometrics.com
 
 # Setup
-RUN echo as of 2016-04-03 && \
-    apt-get update && \
+RUN echo as of 2016-05-16 && \
+    echo 'deb http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu trusty main' > \
+    /etc/apt/sources.list.d/ubuntu-toolchain-r-test-trusty.list && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1E9377A2BA9EF27F && \
+    apt-get update -y && apt-get upgrade -y && apt-get dist-upgrade -y && \
     apt-get install -y build-essential libssl-dev libffi-dev \
     curl ca-certificates unzip libgss3 \
     python-dev python-pip && \
