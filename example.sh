@@ -6,7 +6,7 @@ docker run --detach --name caravel \
     --env SQLALCHEMY_DATABASE_URI="sqlite:////tmp/caravel.db" \
     --publish 8088:8088 \
     -v ~/caravel/caravel.db:/home/caravel/caravel.db \
-    -v ~/caravel/odbc.ini:/home/caravel/.odbc.ini:ro \
+    -v ~/caravel/odbc.ini:/home/caravel/.odbc.ini \
     elifarley/caravel:MS-SQL
 
 # Create an admin user
